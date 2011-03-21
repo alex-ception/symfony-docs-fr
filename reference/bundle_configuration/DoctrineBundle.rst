@@ -2,8 +2,8 @@
    single: Doctrine; ORM Configuration Reference
    single: Configuration Reference; Doctrine ORM
 
-Configuration Reference
-=======================
+Référence de configuration
+==========================
 
 .. configuration-block::
 
@@ -17,37 +17,37 @@ Configuration Reference
                         dbname:               database
                         host:                 localhost
                         port:                 1234
-                        user:                 user
+                        user:                 utilisateur
                         password:             secret
                         driver:               pdo_mysql
-                        driver_class:         MyNamespace\MyDriverImpl
+                        driver_class:         MonEspaceDeNom\MonDriverBDD
                         options:
                             foo: bar
                         path:                 %kernel.data_dir%/data.sqlite
                         memory:               true
                         unix_socket:          /tmp/mysql.sock
-                        wrapper_class:        MyDoctrineDbalConnectionWrapper
+                        wrapper_class:        MonEncapsulationDoctrineDbalConnection
                         charset:              UTF-8
                         logging:              %kernel.debug%
-                        platform_service:     MyOwnDatabasePlatformService
+                        platform_service:     MaPlateformeDeServiceBDD
                     conn1:
                         # ...
                 types:
-                    custom: Sensio\HelloBundle\MyCustomType
+                    custom: Sensio\HelloBundle\MonTypePersonnalise
             orm:
                 auto_generate_proxy_classes:    true
                 proxy_namespace:                Proxies
                 proxy_dir:                      %kernel.cache_dir%/doctrine/orm/Proxies
-                default_entity_manager:         default # Required
+                default_entity_manager:         default # Requis
                 entity_managers:
-                    # At least one has to be defined
+                    # En définir au moins un
                     default:
-                        # The name of a DBAL connection (the one marked as default is used if not set)
+                        # Le nom de la connexion DBAL (celle nommée default est utilisé lorsqu'aucune n'est définie)
                         connection:                     conn1
                         mappings: # Required
                             HelloBundle: ~
                         class_metadata_factory_name:    Doctrine\ORM\Mapping\ClassMetadataFactory
-                        # All cache drivers have to be array, apc, xcache or memcache
+                        # Les systèmes de caches doivent être array, apc, xcache ou memcache
                         metadata_cache_driver:          array
                         query_cache_driver:             array
                         result_cache_driver:
@@ -74,20 +74,20 @@ Configuration Reference
                         dbname="database"
                         host="localhost"
                         port="1234"
-                        user="user"
+                        user="utilisateur"
                         password="secret"
                         driver="pdo_mysql"
-                        driver-class="MyNamespace\MyDriverImpl"
+                        driver-class="MonEspaceDeNom\MonDriverBDD"
                         path="%kernel.data_dir%/data.sqlite"
                         memory="true"
                         unix-socket="/tmp/mysql.sock"
-                        wrapper-class="MyDoctrineDbalConnectionWrapper"
+                        wrapper-class="MonEncapsulationDoctrineDbalConnection"
                         charset="UTF-8"
                         logging="%kernel.debug%"
-                        platform-service="MyOwnDatabasePlatformService"
+                        platform-service="MaPlateformeDeServiceBDD"
                     />
                     <doctrine:connection name="conn1" />
-                    <doctrine:type name="custom" class="Sensio\HelloBundle\MyCustomType" />
+                    <doctrine:type name="custom" class="Sensio\HelloBundle\MonTypePersonnalise" />
                 </doctrine:dbal>
 
                 <doctrine:orm default-entity-manager="default" auto-generate-proxy-classes="true" proxy-namespace="Proxies" proxy-dir="%kernel.cache_dir%/doctrine/orm/Proxies">
